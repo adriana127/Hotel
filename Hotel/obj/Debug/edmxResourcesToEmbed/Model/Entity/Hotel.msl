@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HotelModelStoreContainer" CdmEntityContainer="HotelEntities">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="HotelModel.account">
+        <MappingFragment StoreEntitySet="account">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bookings">
+      <EntityTypeMapping TypeName="HotelModel.booking">
+        <MappingFragment StoreEntitySet="booking">
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="checkIn" ColumnName="checkIn" />
+          <ScalarProperty Name="checkOut" ColumnName="checkOut" />
+          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+          <ScalarProperty Name="numberBookedRooms" ColumnName="numberBookedRooms" />
+          <ScalarProperty Name="numberOfPeople" ColumnName="numberOfPeople" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="features">
+      <EntityTypeMapping TypeName="HotelModel.feature">
+        <MappingFragment StoreEntitySet="features">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="featureName" ColumnName="featureName" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="offers">
+      <EntityTypeMapping TypeName="HotelModel.offer">
+        <MappingFragment StoreEntitySet="offers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nrBookedRooms" ColumnName="nrBookedRooms" />
+          <ScalarProperty Name="newPrice" ColumnName="newPrice" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+          <ScalarProperty Name="offerName" ColumnName="offerName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rooms">
+      <EntityTypeMapping TypeName="HotelModel.room">
+        <MappingFragment StoreEntitySet="room">
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="numberofrooms" ColumnName="numberofrooms" />
+          <ScalarProperty Name="idFeature" ColumnName="idFeature" />
+          <ScalarProperty Name="idPhoto" ColumnName="idPhoto" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roomPhotoes">
+      <EntityTypeMapping TypeName="HotelModel.roomPhoto">
+        <MappingFragment StoreEntitySet="roomPhoto">
+          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="photoPath" ColumnName="photoPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="services">
+      <EntityTypeMapping TypeName="HotelModel.service">
+        <MappingFragment StoreEntitySet="services">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="serviceName" ColumnName="serviceName" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddAccount" FunctionName="HotelModel.Store.AddAccount" />
+    <FunctionImportMapping FunctionImportName="AddBooking" FunctionName="HotelModel.Store.AddBooking" />
+    <FunctionImportMapping FunctionImportName="AddFeature" FunctionName="HotelModel.Store.AddFeature" />
+    <FunctionImportMapping FunctionImportName="AddOffer" FunctionName="HotelModel.Store.AddOffer" />
+    <FunctionImportMapping FunctionImportName="AddRoom" FunctionName="HotelModel.Store.AddRoom" />
+    <FunctionImportMapping FunctionImportName="AddService" FunctionName="HotelModel.Store.AddService" />
+    <FunctionImportMapping FunctionImportName="ModifyAccount" FunctionName="HotelModel.Store.ModifyAccount" />
+    <FunctionImportMapping FunctionImportName="ModifyBooking" FunctionName="HotelModel.Store.ModifyBooking" />
+    <FunctionImportMapping FunctionImportName="ModifyFeature" FunctionName="HotelModel.Store.ModifyFeature" />
+    <FunctionImportMapping FunctionImportName="ModifyOffer" FunctionName="HotelModel.Store.ModifyOffer" />
+    <FunctionImportMapping FunctionImportName="ModifyRoom" FunctionName="HotelModel.Store.ModifyRoom" />
+    <FunctionImportMapping FunctionImportName="ModifyService" FunctionName="HotelModel.Store.ModifyService" />
+    <FunctionImportMapping FunctionImportName="RemoveAccount" FunctionName="HotelModel.Store.RemoveAccount" />
+    <FunctionImportMapping FunctionImportName="RemoveBooking" FunctionName="HotelModel.Store.RemoveBooking" />
+    <FunctionImportMapping FunctionImportName="RemoveFeatures" FunctionName="HotelModel.Store.RemoveFeatures" />
+    <FunctionImportMapping FunctionImportName="RemoveOffers" FunctionName="HotelModel.Store.RemoveOffers" />
+    <FunctionImportMapping FunctionImportName="RemoveRooms" FunctionName="HotelModel.Store.RemoveRooms" />
+    <FunctionImportMapping FunctionImportName="RemoveServices" FunctionName="HotelModel.Store.RemoveServices" />
+    <EntitySetMapping Name="booking_serivces">
+      <EntityTypeMapping TypeName="HotelModel.booking_serivces">
+        <MappingFragment StoreEntitySet="booking_serivces">
+          <ScalarProperty Name="idBooking" ColumnName="idBooking" />
+          <ScalarProperty Name="idService" ColumnName="idService" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddServiceToBooking" FunctionName="HotelModel.Store.AddServiceToBooking" />
+    <FunctionImportMapping FunctionImportName="ModifyServiceToBooking" FunctionName="HotelModel.Store.ModifyServiceToBooking" />
+    <FunctionImportMapping FunctionImportName="AddPhoto" FunctionName="HotelModel.Store.AddPhoto" />
+    <FunctionImportMapping FunctionImportName="DeletePhoto" FunctionName="HotelModel.Store.DeletePhoto" />
+    <FunctionImportMapping FunctionImportName="PayBooking" FunctionName="HotelModel.Store.PayBooking" />
+  </EntityContainerMapping>
+</Mapping>

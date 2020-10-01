@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="userType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bookings" Relationship="Self.FK__booking__idUser__32E0915F" FromRole="account" ToRole="booking" />
+  </EntityType>
+  <EntityType Name="booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="checkIn" Type="DateTime" Precision="0" />
+    <Property Name="checkOut" Type="DateTime" Precision="0" />
+    <Property Name="idRoom" Type="Int32" />
+    <Property Name="numberBookedRooms" Type="Int32" />
+    <Property Name="numberOfPeople" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="idUser" Type="Int32" />
+    <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="account" Relationship="Self.FK__booking__idUser__32E0915F" FromRole="booking" ToRole="account" />
+    <NavigationProperty Name="room" Relationship="Self.FK__booking__idRoom__300424B4" FromRole="booking" ToRole="room" />
+    <NavigationProperty Name="booking_serivces" Relationship="HotelModel.FK__booking_s__idBoo__5DCAEF64" FromRole="booking" ToRole="booking_serivces" />
+    <Property Name="paid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="feature">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="featureName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="rooms" Relationship="Self.FK__room__idFeature__2C3393D0" FromRole="features" ToRole="room" />
+  </EntityType>
+  <EntityType Name="offer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nrBookedRooms" Type="Int32" />
+    <Property Name="newPrice" Type="Int32" />
+    <Property Name="startDate" Type="DateTime" Precision="0" />
+    <Property Name="dueDate" Type="DateTime" Precision="0" />
+    <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="offerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="room">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="numberofrooms" Type="Int32" />
+    <Property Name="idFeature" Type="Int32" />
+    <Property Name="idPhoto" Type="Int32" />
+    <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bookings" Relationship="Self.FK__booking__idRoom__300424B4" FromRole="room" ToRole="booking" />
+    <NavigationProperty Name="feature" Relationship="Self.FK__room__idFeature__2C3393D0" FromRole="room" ToRole="features" />
+    <NavigationProperty Name="roomPhoto" Relationship="Self.FK__room__idPhoto__2D27B809" FromRole="room" ToRole="roomPhoto" />
+    <Property Name="capacity" Type="Int32" />
+    <NavigationProperty Name="roomPhotoes" Relationship="HotelModel.FK__roomPhoto__idRoo__60A75C0F" FromRole="room" ToRole="roomPhoto" />
+  </EntityType>
+  <EntityType Name="roomPhoto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="photoPath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="rooms" Relationship="Self.FK__room__idPhoto__2D27B809" FromRole="roomPhoto" ToRole="room" />
+    <Property Name="idRoom" Type="Int32" />
+    <NavigationProperty Name="room" Relationship="HotelModel.FK__roomPhoto__idRoo__60A75C0F" FromRole="roomPhoto" ToRole="room" />
+  </EntityType>
+  <EntityType Name="service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="serviceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="booking_serivces" Relationship="HotelModel.FK__booking_s__idSer__5CD6CB2B" FromRole="service" ToRole="booking_serivces" />
+  </EntityType>
+  <Association Name="FK__booking__idUser__32E0915F">
+    <End Role="account" Type="Self.account" Multiplicity="0..1" />
+    <End Role="booking" Type="Self.booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__booking__idRoom__300424B4">
+    <End Role="room" Type="Self.room" Multiplicity="0..1" />
+    <End Role="booking" Type="Self.booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="room">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking">
+        <PropertyRef Name="idRoom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__room__idFeature__2C3393D0">
+    <End Role="features" Type="Self.feature" Multiplicity="0..1" />
+    <End Role="room" Type="Self.room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="features">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="room">
+        <PropertyRef Name="idFeature" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__room__idPhoto__2D27B809">
+    <End Role="roomPhoto" Type="Self.roomPhoto" Multiplicity="0..1" />
+    <End Role="room" Type="Self.room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roomPhoto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="room">
+        <PropertyRef Name="idPhoto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HotelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="accounts" EntityType="Self.account" />
+    <EntitySet Name="bookings" EntityType="Self.booking" />
+    <EntitySet Name="features" EntityType="Self.feature" />
+    <EntitySet Name="offers" EntityType="Self.offer" />
+    <EntitySet Name="rooms" EntityType="Self.room" />
+    <EntitySet Name="roomPhotoes" EntityType="Self.roomPhoto" />
+    <EntitySet Name="services" EntityType="Self.service" />
+    <AssociationSet Name="FK__booking__idUser__32E0915F" Association="Self.FK__booking__idUser__32E0915F">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="booking" EntitySet="bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__booking__idRoom__300424B4" Association="Self.FK__booking__idRoom__300424B4">
+      <End Role="room" EntitySet="rooms" />
+      <End Role="booking" EntitySet="bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__room__idFeature__2C3393D0" Association="Self.FK__room__idFeature__2C3393D0">
+      <End Role="features" EntitySet="features" />
+      <End Role="room" EntitySet="rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK__room__idPhoto__2D27B809" Association="Self.FK__room__idPhoto__2D27B809">
+      <End Role="roomPhoto" EntitySet="roomPhotoes" />
+      <End Role="room" EntitySet="rooms" />
+    </AssociationSet>
+    <FunctionImport Name="AddAccount">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="fullname" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+      <Parameter Name="usertype" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddBooking">
+      <Parameter Name="checkIn" Mode="In" Type="DateTime" />
+      <Parameter Name="checkOut" Mode="In" Type="DateTime" />
+      <Parameter Name="bookedRoom" Mode="In" Type="Int32" />
+      <Parameter Name="nrPeople" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="room" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddFeature">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddOffer">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="bookedRooms" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="dueDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="AddRoom">
+      <Parameter Name="capacity" Mode="In" Type="Int32" />
+      <Parameter Name="numberofRooms" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="feature" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddService">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ModifyAccount">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="fullname" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+      <Parameter Name="usertype" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ModifyBooking">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="checkIn" Mode="In" Type="DateTime" />
+      <Parameter Name="checkOut" Mode="In" Type="DateTime" />
+      <Parameter Name="bookedRoom" Mode="In" Type="Int32" />
+      <Parameter Name="nrPeople" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="room" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ModifyFeature">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ModifyOffer">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="bookedRooms" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="dueDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ModifyRoom">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="numberofRooms" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="feature" Mode="In" Type="Int32" />
+      <Parameter Name="capacity" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ModifyService">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RemoveAccount">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RemoveBooking">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RemoveFeatures">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RemoveOffers">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RemoveRooms">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RemoveServices">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="booking_serivces" EntityType="HotelModel.booking_serivces" />
+    <AssociationSet Name="FK__booking_s__idBoo__5DCAEF64" Association="HotelModel.FK__booking_s__idBoo__5DCAEF64">
+      <End Role="booking" EntitySet="bookings" />
+      <End Role="booking_serivces" EntitySet="booking_serivces" />
+    </AssociationSet>
+    <AssociationSet Name="FK__booking_s__idSer__5CD6CB2B" Association="HotelModel.FK__booking_s__idSer__5CD6CB2B">
+      <End Role="service" EntitySet="services" />
+      <End Role="booking_serivces" EntitySet="booking_serivces" />
+    </AssociationSet>
+    <FunctionImport Name="AddServiceToBooking">
+      <Parameter Name="idService" Mode="In" Type="Int32" />
+      <Parameter Name="idBooking" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ModifyServiceToBooking">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="idService" Mode="In" Type="Int32" />
+      <Parameter Name="idBooking" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <AssociationSet Name="FK__roomPhoto__idRoo__60A75C0F" Association="HotelModel.FK__roomPhoto__idRoo__60A75C0F">
+      <End Role="room" EntitySet="rooms" />
+      <End Role="roomPhoto" EntitySet="roomPhotoes" />
+    </AssociationSet>
+    <FunctionImport Name="AddPhoto">
+      <Parameter Name="idRoom" Mode="In" Type="Int32" />
+      <Parameter Name="path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeletePhoto">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PayBooking">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="booking_serivces">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idService" Type="Int32" />
+    <Property Name="idBooking" Type="Int32" />
+    <NavigationProperty Name="booking" Relationship="HotelModel.FK__booking_s__idBoo__5DCAEF64" FromRole="booking_serivces" ToRole="booking" />
+    <NavigationProperty Name="service" Relationship="HotelModel.FK__booking_s__idSer__5CD6CB2B" FromRole="booking_serivces" ToRole="service" />
+  </EntityType>
+  <Association Name="FK__booking_s__idBoo__5DCAEF64">
+    <End Type="HotelModel.booking" Role="booking" Multiplicity="0..1" />
+    <End Type="HotelModel.booking_serivces" Role="booking_serivces" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="booking">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking_serivces">
+        <PropertyRef Name="idBooking" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__booking_s__idSer__5CD6CB2B">
+    <End Type="HotelModel.service" Role="service" Multiplicity="0..1" />
+    <End Type="HotelModel.booking_serivces" Role="booking_serivces" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking_serivces">
+        <PropertyRef Name="idService" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__roomPhoto__idRoo__60A75C0F">
+    <End Type="HotelModel.room" Role="room" Multiplicity="0..1" />
+    <End Type="HotelModel.roomPhoto" Role="roomPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="room">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roomPhoto">
+        <PropertyRef Name="idRoom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="20" />
+          <Property Name="fullname" Type="varchar" MaxLength="100" />
+          <Property Name="pass" Type="varchar" MaxLength="30" />
+          <Property Name="userType" Type="varchar" MaxLength="20" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="checkIn" Type="date" />
+          <Property Name="checkOut" Type="date" />
+          <Property Name="idRoom" Type="int" />
+          <Property Name="numberBookedRooms" Type="int" />
+          <Property Name="numberOfPeople" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="idUser" Type="int" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+          <Property Name="paid" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="booking_serivces">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idService" Type="int" />
+          <Property Name="idBooking" Type="int" />
+        </EntityType>
+        <EntityType Name="features">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="featureName" Type="varchar" MaxLength="100" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="offers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nrBookedRooms" Type="int" />
+          <Property Name="newPrice" Type="int" />
+          <Property Name="startDate" Type="date" />
+          <Property Name="dueDate" Type="date" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+          <Property Name="offerName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="price" Type="int" />
+          <Property Name="numberofrooms" Type="int" />
+          <Property Name="idFeature" Type="int" />
+          <Property Name="idPhoto" Type="int" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+          <Property Name="capacity" Type="int" />
+        </EntityType>
+        <EntityType Name="roomPhoto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="photoPath" Type="varchar" MaxLength="200" />
+          <Property Name="idRoom" Type="int" />
+        </EntityType>
+        <EntityType Name="services">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serviceName" Type="varchar" MaxLength="100" />
+          <Property Name="price" Type="int" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__booking__idRoom__300424B4">
+          <End Role="room" Type="Self.room" Multiplicity="0..1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="idRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking__idUser__32E0915F">
+          <End Role="account" Type="Self.account" Multiplicity="0..1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking_s__idBoo__5DCAEF64">
+          <End Role="booking" Type="Self.booking" Multiplicity="0..1" />
+          <End Role="booking_serivces" Type="Self.booking_serivces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="booking">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking_serivces">
+              <PropertyRef Name="idBooking" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking_s__idSer__5CD6CB2B">
+          <End Role="services" Type="Self.services" Multiplicity="0..1" />
+          <End Role="booking_serivces" Type="Self.booking_serivces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="services">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking_serivces">
+              <PropertyRef Name="idService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__room__idFeature__2C3393D0">
+          <End Role="features" Type="Self.features" Multiplicity="0..1" />
+          <End Role="room" Type="Self.room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="features">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="room">
+              <PropertyRef Name="idFeature" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__room__idPhoto__2D27B809">
+          <End Role="roomPhoto" Type="Self.roomPhoto" Multiplicity="0..1" />
+          <End Role="room" Type="Self.room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roomPhoto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="room">
+              <PropertyRef Name="idPhoto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__roomPhoto__idRoo__60A75C0F">
+          <End Role="room" Type="Self.room" Multiplicity="0..1" />
+          <End Role="roomPhoto" Type="Self.roomPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roomPhoto">
+              <PropertyRef Name="idRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="fullname" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+          <Parameter Name="usertype" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="checkIn" Type="date" Mode="In" />
+          <Parameter Name="checkOut" Type="date" Mode="In" />
+          <Parameter Name="bookedRoom" Type="int" Mode="In" />
+          <Parameter Name="nrPeople" Type="int" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="room" Type="int" Mode="In" />
+          <Parameter Name="user" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddFeature" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddOffer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="bookedRooms" Type="int" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="dueDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="AddPhoto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idRoom" Type="int" Mode="In" />
+          <Parameter Name="path" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="capacity" Type="int" Mode="In" />
+          <Parameter Name="numberofRooms" Type="int" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="feature" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddService" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddServiceToBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idService" Type="int" Mode="In" />
+          <Parameter Name="idBooking" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeletePhoto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ModifyAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="fullname" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+          <Parameter Name="usertype" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ModifyBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="checkIn" Type="date" Mode="In" />
+          <Parameter Name="checkOut" Type="date" Mode="In" />
+          <Parameter Name="bookedRoom" Type="int" Mode="In" />
+          <Parameter Name="nrPeople" Type="int" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="room" Type="int" Mode="In" />
+          <Parameter Name="user" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ModifyFeature" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ModifyOffer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="bookedRooms" Type="int" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="dueDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="ModifyRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="numberofRooms" Type="int" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="feature" Type="int" Mode="In" />
+          <Parameter Name="capacity" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ModifyService" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ModifyServiceToBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idService" Type="int" Mode="In" />
+          <Parameter Name="idBooking" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PayBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveFeatures" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveOffers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveRooms" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveServices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="HotelModelStoreContainer">
+          <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="booking_serivces" EntityType="Self.booking_serivces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="features" EntityType="Self.features" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="offers" EntityType="Self.offers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="room" EntityType="Self.room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roomPhoto" EntityType="Self.roomPhoto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="services" EntityType="Self.services" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__booking__idRoom__300424B4" Association="Self.FK__booking__idRoom__300424B4">
+            <End Role="room" EntitySet="room" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking__idUser__32E0915F" Association="Self.FK__booking__idUser__32E0915F">
+            <End Role="account" EntitySet="account" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking_s__idBoo__5DCAEF64" Association="Self.FK__booking_s__idBoo__5DCAEF64">
+            <End Role="booking" EntitySet="booking" />
+            <End Role="booking_serivces" EntitySet="booking_serivces" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking_s__idSer__5CD6CB2B" Association="Self.FK__booking_s__idSer__5CD6CB2B">
+            <End Role="services" EntitySet="services" />
+            <End Role="booking_serivces" EntitySet="booking_serivces" />
+          </AssociationSet>
+          <AssociationSet Name="FK__room__idFeature__2C3393D0" Association="Self.FK__room__idFeature__2C3393D0">
+            <End Role="features" EntitySet="features" />
+            <End Role="room" EntitySet="room" />
+          </AssociationSet>
+          <AssociationSet Name="FK__room__idPhoto__2D27B809" Association="Self.FK__room__idPhoto__2D27B809">
+            <End Role="roomPhoto" EntitySet="roomPhoto" />
+            <End Role="room" EntitySet="room" />
+          </AssociationSet>
+          <AssociationSet Name="FK__roomPhoto__idRoo__60A75C0F" Association="Self.FK__roomPhoto__idRoo__60A75C0F">
+            <End Role="room" EntitySet="room" />
+            <End Role="roomPhoto" EntitySet="roomPhoto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="userType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__booking__idUser__32E0915F" FromRole="account" ToRole="booking" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="checkIn" Type="DateTime" Precision="0" />
+          <Property Name="checkOut" Type="DateTime" Precision="0" />
+          <Property Name="idRoom" Type="Int32" />
+          <Property Name="numberBookedRooms" Type="Int32" />
+          <Property Name="numberOfPeople" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="idUser" Type="Int32" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="account" Relationship="Self.FK__booking__idUser__32E0915F" FromRole="booking" ToRole="account" />
+          <NavigationProperty Name="room" Relationship="Self.FK__booking__idRoom__300424B4" FromRole="booking" ToRole="room" />
+          <NavigationProperty Name="booking_serivces" Relationship="HotelModel.FK__booking_s__idBoo__5DCAEF64" FromRole="booking" ToRole="booking_serivces" />
+          <Property Name="paid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="feature">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="featureName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rooms" Relationship="Self.FK__room__idFeature__2C3393D0" FromRole="features" ToRole="room" />
+        </EntityType>
+        <EntityType Name="offer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nrBookedRooms" Type="Int32" />
+          <Property Name="newPrice" Type="Int32" />
+          <Property Name="startDate" Type="DateTime" Precision="0" />
+          <Property Name="dueDate" Type="DateTime" Precision="0" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="offerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="numberofrooms" Type="Int32" />
+          <Property Name="idFeature" Type="Int32" />
+          <Property Name="idPhoto" Type="Int32" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__booking__idRoom__300424B4" FromRole="room" ToRole="booking" />
+          <NavigationProperty Name="feature" Relationship="Self.FK__room__idFeature__2C3393D0" FromRole="room" ToRole="features" />
+          <NavigationProperty Name="roomPhoto" Relationship="Self.FK__room__idPhoto__2D27B809" FromRole="room" ToRole="roomPhoto" />
+          <Property Name="capacity" Type="Int32" />
+          <NavigationProperty Name="roomPhotoes" Relationship="HotelModel.FK__roomPhoto__idRoo__60A75C0F" FromRole="room" ToRole="roomPhoto" />
+        </EntityType>
+        <EntityType Name="roomPhoto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="photoPath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rooms" Relationship="Self.FK__room__idPhoto__2D27B809" FromRole="roomPhoto" ToRole="room" />
+          <Property Name="idRoom" Type="Int32" />
+          <NavigationProperty Name="room" Relationship="HotelModel.FK__roomPhoto__idRoo__60A75C0F" FromRole="roomPhoto" ToRole="room" />
+        </EntityType>
+        <EntityType Name="service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serviceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="booking_serivces" Relationship="HotelModel.FK__booking_s__idSer__5CD6CB2B" FromRole="service" ToRole="booking_serivces" />
+        </EntityType>
+        <Association Name="FK__booking__idUser__32E0915F">
+          <End Role="account" Type="Self.account" Multiplicity="0..1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking__idRoom__300424B4">
+          <End Role="room" Type="Self.room" Multiplicity="0..1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="idRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__room__idFeature__2C3393D0">
+          <End Role="features" Type="Self.feature" Multiplicity="0..1" />
+          <End Role="room" Type="Self.room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="features">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="room">
+              <PropertyRef Name="idFeature" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__room__idPhoto__2D27B809">
+          <End Role="roomPhoto" Type="Self.roomPhoto" Multiplicity="0..1" />
+          <End Role="room" Type="Self.room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roomPhoto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="room">
+              <PropertyRef Name="idPhoto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="bookings" EntityType="Self.booking" />
+          <EntitySet Name="features" EntityType="Self.feature" />
+          <EntitySet Name="offers" EntityType="Self.offer" />
+          <EntitySet Name="rooms" EntityType="Self.room" />
+          <EntitySet Name="roomPhotoes" EntityType="Self.roomPhoto" />
+          <EntitySet Name="services" EntityType="Self.service" />
+          <AssociationSet Name="FK__booking__idUser__32E0915F" Association="Self.FK__booking__idUser__32E0915F">
+            <End Role="account" EntitySet="accounts" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking__idRoom__300424B4" Association="Self.FK__booking__idRoom__300424B4">
+            <End Role="room" EntitySet="rooms" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__room__idFeature__2C3393D0" Association="Self.FK__room__idFeature__2C3393D0">
+            <End Role="features" EntitySet="features" />
+            <End Role="room" EntitySet="rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__room__idPhoto__2D27B809" Association="Self.FK__room__idPhoto__2D27B809">
+            <End Role="roomPhoto" EntitySet="roomPhotoes" />
+            <End Role="room" EntitySet="rooms" />
+          </AssociationSet>
+          <FunctionImport Name="AddAccount">
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="fullname" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+            <Parameter Name="usertype" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddBooking">
+            <Parameter Name="checkIn" Mode="In" Type="DateTime" />
+            <Parameter Name="checkOut" Mode="In" Type="DateTime" />
+            <Parameter Name="bookedRoom" Mode="In" Type="Int32" />
+            <Parameter Name="nrPeople" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="room" Mode="In" Type="Int32" />
+            <Parameter Name="user" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddFeature">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddOffer">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="bookedRooms" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="dueDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AddRoom">
+            <Parameter Name="capacity" Mode="In" Type="Int32" />
+            <Parameter Name="numberofRooms" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="feature" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddService">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ModifyAccount">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="fullname" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+            <Parameter Name="usertype" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ModifyBooking">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="checkIn" Mode="In" Type="DateTime" />
+            <Parameter Name="checkOut" Mode="In" Type="DateTime" />
+            <Parameter Name="bookedRoom" Mode="In" Type="Int32" />
+            <Parameter Name="nrPeople" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="room" Mode="In" Type="Int32" />
+            <Parameter Name="user" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ModifyFeature">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ModifyOffer">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="bookedRooms" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="dueDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ModifyRoom">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="numberofRooms" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="feature" Mode="In" Type="Int32" />
+            <Parameter Name="capacity" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ModifyService">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveAccount">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveBooking">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveFeatures">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveOffers">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveRooms">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveServices">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="booking_serivces" EntityType="HotelModel.booking_serivces" />
+          <AssociationSet Name="FK__booking_s__idBoo__5DCAEF64" Association="HotelModel.FK__booking_s__idBoo__5DCAEF64">
+            <End Role="booking" EntitySet="bookings" />
+            <End Role="booking_serivces" EntitySet="booking_serivces" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking_s__idSer__5CD6CB2B" Association="HotelModel.FK__booking_s__idSer__5CD6CB2B">
+            <End Role="service" EntitySet="services" />
+            <End Role="booking_serivces" EntitySet="booking_serivces" />
+          </AssociationSet>
+          <FunctionImport Name="AddServiceToBooking">
+            <Parameter Name="idService" Mode="In" Type="Int32" />
+            <Parameter Name="idBooking" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ModifyServiceToBooking">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idService" Mode="In" Type="Int32" />
+            <Parameter Name="idBooking" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK__roomPhoto__idRoo__60A75C0F" Association="HotelModel.FK__roomPhoto__idRoo__60A75C0F">
+            <End Role="room" EntitySet="rooms" />
+            <End Role="roomPhoto" EntitySet="roomPhotoes" />
+          </AssociationSet>
+          <FunctionImport Name="AddPhoto">
+            <Parameter Name="idRoom" Mode="In" Type="Int32" />
+            <Parameter Name="path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeletePhoto">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PayBooking">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="booking_serivces">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idService" Type="Int32" />
+          <Property Name="idBooking" Type="Int32" />
+          <NavigationProperty Name="booking" Relationship="HotelModel.FK__booking_s__idBoo__5DCAEF64" FromRole="booking_serivces" ToRole="booking" />
+          <NavigationProperty Name="service" Relationship="HotelModel.FK__booking_s__idSer__5CD6CB2B" FromRole="booking_serivces" ToRole="service" />
+        </EntityType>
+        <Association Name="FK__booking_s__idBoo__5DCAEF64">
+          <End Type="HotelModel.booking" Role="booking" Multiplicity="0..1" />
+          <End Type="HotelModel.booking_serivces" Role="booking_serivces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="booking">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking_serivces">
+              <PropertyRef Name="idBooking" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking_s__idSer__5CD6CB2B">
+          <End Type="HotelModel.service" Role="service" Multiplicity="0..1" />
+          <End Type="HotelModel.booking_serivces" Role="booking_serivces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking_serivces">
+              <PropertyRef Name="idService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__roomPhoto__idRoo__60A75C0F">
+          <End Type="HotelModel.room" Role="room" Multiplicity="0..1" />
+          <End Type="HotelModel.roomPhoto" Role="roomPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roomPhoto">
+              <PropertyRef Name="idRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelModelStoreContainer" CdmEntityContainer="HotelEntities">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="HotelModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookings">
+            <EntityTypeMapping TypeName="HotelModel.booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="paid" ColumnName="paid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="checkIn" ColumnName="checkIn" />
+                <ScalarProperty Name="checkOut" ColumnName="checkOut" />
+                <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+                <ScalarProperty Name="numberBookedRooms" ColumnName="numberBookedRooms" />
+                <ScalarProperty Name="numberOfPeople" ColumnName="numberOfPeople" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="features">
+            <EntityTypeMapping TypeName="HotelModel.feature">
+              <MappingFragment StoreEntitySet="features">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="featureName" ColumnName="featureName" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="offers">
+            <EntityTypeMapping TypeName="HotelModel.offer">
+              <MappingFragment StoreEntitySet="offers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nrBookedRooms" ColumnName="nrBookedRooms" />
+                <ScalarProperty Name="newPrice" ColumnName="newPrice" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+                <ScalarProperty Name="offerName" ColumnName="offerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rooms">
+            <EntityTypeMapping TypeName="HotelModel.room">
+              <MappingFragment StoreEntitySet="room">
+                <ScalarProperty Name="capacity" ColumnName="capacity" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="numberofrooms" ColumnName="numberofrooms" />
+                <ScalarProperty Name="idFeature" ColumnName="idFeature" />
+                <ScalarProperty Name="idPhoto" ColumnName="idPhoto" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roomPhotoes">
+            <EntityTypeMapping TypeName="HotelModel.roomPhoto">
+              <MappingFragment StoreEntitySet="roomPhoto">
+                <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="photoPath" ColumnName="photoPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="services">
+            <EntityTypeMapping TypeName="HotelModel.service">
+              <MappingFragment StoreEntitySet="services">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="serviceName" ColumnName="serviceName" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddAccount" FunctionName="HotelModel.Store.AddAccount" />
+          <FunctionImportMapping FunctionImportName="AddBooking" FunctionName="HotelModel.Store.AddBooking" />
+          <FunctionImportMapping FunctionImportName="AddFeature" FunctionName="HotelModel.Store.AddFeature" />
+          <FunctionImportMapping FunctionImportName="AddOffer" FunctionName="HotelModel.Store.AddOffer" />
+          <FunctionImportMapping FunctionImportName="AddRoom" FunctionName="HotelModel.Store.AddRoom" />
+          <FunctionImportMapping FunctionImportName="AddService" FunctionName="HotelModel.Store.AddService" />
+          <FunctionImportMapping FunctionImportName="ModifyAccount" FunctionName="HotelModel.Store.ModifyAccount" />
+          <FunctionImportMapping FunctionImportName="ModifyBooking" FunctionName="HotelModel.Store.ModifyBooking" />
+          <FunctionImportMapping FunctionImportName="ModifyFeature" FunctionName="HotelModel.Store.ModifyFeature" />
+          <FunctionImportMapping FunctionImportName="ModifyOffer" FunctionName="HotelModel.Store.ModifyOffer" />
+          <FunctionImportMapping FunctionImportName="ModifyRoom" FunctionName="HotelModel.Store.ModifyRoom" />
+          <FunctionImportMapping FunctionImportName="ModifyService" FunctionName="HotelModel.Store.ModifyService" />
+          <FunctionImportMapping FunctionImportName="RemoveAccount" FunctionName="HotelModel.Store.RemoveAccount" />
+          <FunctionImportMapping FunctionImportName="RemoveBooking" FunctionName="HotelModel.Store.RemoveBooking" />
+          <FunctionImportMapping FunctionImportName="RemoveFeatures" FunctionName="HotelModel.Store.RemoveFeatures" />
+          <FunctionImportMapping FunctionImportName="RemoveOffers" FunctionName="HotelModel.Store.RemoveOffers" />
+          <FunctionImportMapping FunctionImportName="RemoveRooms" FunctionName="HotelModel.Store.RemoveRooms" />
+          <FunctionImportMapping FunctionImportName="RemoveServices" FunctionName="HotelModel.Store.RemoveServices" />
+          <EntitySetMapping Name="booking_serivces">
+            <EntityTypeMapping TypeName="HotelModel.booking_serivces">
+              <MappingFragment StoreEntitySet="booking_serivces">
+                <ScalarProperty Name="idBooking" ColumnName="idBooking" />
+                <ScalarProperty Name="idService" ColumnName="idService" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddServiceToBooking" FunctionName="HotelModel.Store.AddServiceToBooking" />
+          <FunctionImportMapping FunctionImportName="ModifyServiceToBooking" FunctionName="HotelModel.Store.ModifyServiceToBooking" />
+          <FunctionImportMapping FunctionImportName="AddPhoto" FunctionName="HotelModel.Store.AddPhoto" />
+          <FunctionImportMapping FunctionImportName="DeletePhoto" FunctionName="HotelModel.Store.DeletePhoto" />
+          <FunctionImportMapping FunctionImportName="PayBooking" FunctionName="HotelModel.Store.PayBooking" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

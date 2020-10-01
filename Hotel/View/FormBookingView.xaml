@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="Hotel.View.FormBookingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="585" d:DesignWidth="925">
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="585" VerticalAlignment="Top" Width="925" Margin="0,-5,-0.2,0">
+
+            <Rectangle Fill="Black" Height="50" Stroke="Black" Width="925"/>
+            <Button Content="Save" Visibility="{Binding ModifyVisibile}" Command="{Binding SaveBooking}" Canvas.Left="670" Canvas.Top="460" Width="130" Height="60" />
+            <Button Background="Beige" Command="{Binding ChangeScreenToBookings}" Content="Bookings" Width="135" Height="50"/>
+            <Button Background="Beige" Command="{Binding ChangeScreenToRooms}" Content="Rooms" Width="135" Height="50" Canvas.Left="135"/>
+            <Button Background="Beige" Visibility="{Binding IsAdmin}" Command="{Binding ChangeScreenToOffers}" Content="Offers" Width="135" Height="50" Canvas.Left="270"/>
+            <Button Background="Beige" Visibility="{Binding IsAdmin}" Command="{Binding ChangeScreenToServices}" Content="Services" Width="130" Height="50" Canvas.Left="406" />
+            <Button Background="Beige" Visibility="{Binding IsAdmin}" Command="{Binding ChangeScreenToFeatures}" Content="Features" Width="135" Height="50" Canvas.Left="670"/>
+            <Button Background="Beige" Visibility="{Binding IsAdmin}" Command="{Binding ChangeScreenToAccounts}" Content="Account" Width="135" Height="50" Canvas.Left="535"/>
+            <DatePicker HorizontalAlignment="Left" SelectedDate="{Binding SelectedCheckIn}"  VerticalAlignment="Top" Height="30" Width="250" Canvas.Left="100" Canvas.Top="110"/>
+            <DatePicker HorizontalAlignment="Left" SelectedDate="{Binding SelectedCheckOut}"  VerticalAlignment="Top" Height="30" Width="250" Canvas.Left="100" Canvas.Top="170"/>
+            <Label Content="Check-In" Canvas.Left="100" Canvas.Top="80" Width="180"/>
+            <Label Content="Check-Out" Canvas.Left="100" Canvas.Top="139" Width="180"/>
+            <ComboBox ItemsSource="{Binding NrOfRooms}" SelectedItem="{Binding SelectedRoomNumber}" Canvas.Left="100" Canvas.Top="237" Width="250" Height="21"/>
+            <Label Content="Number of Rooms" Canvas.Left="100" Canvas.Top="205" Width="180"/>
+            <ListView ItemsSource="{Binding AvailableRooms}" SelectedItem="{Binding SelectedRoom}" Height="125" Canvas.Left="100" Canvas.Top="350" Width="250">
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Capacity" Width="150
+                                        
+                                    " DisplayMemberBinding="{Binding capacity, UpdateSourceTrigger=PropertyChanged}" />
+                        <GridViewColumn Header="Price" Width="150
+                                        
+                                    " DisplayMemberBinding="{Binding price, UpdateSourceTrigger=PropertyChanged}" />
+
+                    </GridView>
+                </ListView.View>
+
+            </ListView>
+            <TextBox Height="25" Canvas.Left="100" TextWrapping="Wrap" Text="TextBox" Canvas.Top="294" Width="250"/>
+            <Label Content="Search by feature" Canvas.Left="100" Canvas.Top="263" Width="180"/>
+            <ListView ItemsSource="{Binding ServicesList}"  SelectedItem="{Binding SelectedService}" SelectionMode="Extended" Height="176" Canvas.Left="515" Canvas.Top="110" Width="285">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Service" Width="150
+                                        
+                                    " DisplayMemberBinding="{Binding serviceName, UpdateSourceTrigger=PropertyChanged}" />
+                        <GridViewColumn Header="Price" Width="150
+                                        
+                                    " DisplayMemberBinding="{Binding price, UpdateSourceTrigger=PropertyChanged}" />
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Label Content="Price" Canvas.Left="545" Canvas.Top="333" Width="100"/>
+            <Label Content="{Binding Price,UpdateSourceTrigger=PropertyChanged}" Canvas.Left="650" Canvas.Top="333" Width="100"/>
+            <Button Visibility="{Binding PaymentVisible}" Content="Pay" Command="{Binding PayBooking}" Canvas.Left="590" Canvas.Top="363" Width="130" Height="60" />
+
+
+
+
+        </Canvas>
+    </Grid>
+</UserControl>

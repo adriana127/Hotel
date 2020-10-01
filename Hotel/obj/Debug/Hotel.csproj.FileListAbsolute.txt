@@ -1,0 +1,121 @@
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\Hotel.csprojAssemblyReference.cache
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\MainWindow.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\AccountsView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\BookingsView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\FeaturesView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\FormAccountView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\FormBookingView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\FormOfferView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\FormRoomView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\LoginView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\OffersView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\RoomsView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\ServicesView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\SignUpView.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\App.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\Hotel_Content.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\Hotel_MarkupCompile.cache
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\Hotel_MarkupCompile.lref
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\Hotel.exe.config
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\Hotel.exe
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\Hotel.pdb
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\EntityFramework.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\Hangfire.Core.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\Owin.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\EntityFramework.xml
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\Hangfire.Core.xml
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\es\Hangfire.Core.resources.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\fa\Hangfire.Core.resources.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\fr\Hangfire.Core.resources.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\nl\Hangfire.Core.resources.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\pt\Hangfire.Core.resources.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\pt-BR\Hangfire.Core.resources.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\pt-PT\Hangfire.Core.resources.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\zh\Hangfire.Core.resources.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\bin\Debug\zh-TW\Hangfire.Core.resources.dll
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\App.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\MainWindow.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\AccountsView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\BookingsView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\FeaturesView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\FormAccountView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\FormBookingView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\FormOfferView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\FormRoomView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\LoginView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\OffersView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\RoomsView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\ServicesView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\View\SignUpView.baml
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\Hotel.g.resources
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\Hotel.Properties.Resources.resources
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\Hotel.csproj.GenerateResource.cache
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\Hotel.csproj.CopyComplete
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\Hotel.exe
+C:\Users\Adriana\source\repos\Hotel\Hotel\obj\Debug\Hotel.pdb
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\Hotel.exe.config
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\Hotel.exe
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\Hotel.pdb
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\EntityFramework.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\Hangfire.Core.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\Owin.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\EntityFramework.xml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\Hangfire.Core.xml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\es\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\fa\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\fr\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\nl\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\pt\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\pt-BR\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\pt-PT\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\zh\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\bin\Debug\zh-TW\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel.csprojAssemblyReference.cache
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\MainWindow.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\AccountsView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\BookingsView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\FeaturesView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\FormAccountView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\FormBookingView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\FormOfferView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\FormRoomView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\LoginView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\OffersView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\RoomsView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\ServicesView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\SignUpView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\App.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel_Content.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel_MarkupCompile.cache
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel_MarkupCompile.lref
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\App.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\MainWindow.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\AccountsView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\BookingsView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\FeaturesView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\FormAccountView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\FormBookingView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\FormOfferView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\FormRoomView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\LoginView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\OffersView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\RoomsView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\ServicesView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\View\SignUpView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel.g.resources
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel.Properties.Resources.resources
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel.csproj.GenerateResource.cache
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel.csproj.CoreCompileInputs.cache
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel.csproj.CopyComplete
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel.exe
+C:\Users\Adriana\Desktop\Anul II sem II\New folder\Hotel\obj\Debug\Hotel.pdb
